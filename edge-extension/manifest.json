@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "XHotLab · 中文创作助手",
+  "description": "XHotLab 多平台热门发现、视频采集、素材与 X 发布工作台。",
+  "version": "1.2.9",
+  "icons": {
+    "16": "icons/xhotlab-16.png",
+    "32": "icons/xhotlab-32.png",
+    "48": "icons/xhotlab-48.png",
+    "128": "icons/xhotlab-128.png"
+  },
+  "minimum_chrome_version": "116",
+  "permissions": ["sidePanel", "tabs", "scripting", "storage", "alarms"],
+  "host_permissions": [
+    "http://127.0.0.1:8766/*",
+    "https://x.com/*",
+    "https://www.x.com/*"
+  ],
+  "externally_connectable": {
+    "matches": ["http://127.0.0.1/*"]
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "action": {
+    "default_title": "XHotLab · 热点、素材与发布",
+    "default_icon": {
+      "16": "icons/xhotlab-16.png",
+      "32": "icons/xhotlab-32.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://www.x.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["http://127.0.0.1:8766/*"],
+      "js": ["localhost-bridge.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' http://127.0.0.1:8766; img-src 'self' http://127.0.0.1:8766 https://pbs.twimg.com https://*.douyinpic.com data:"
+  }
+}
