@@ -1,203 +1,114 @@
-# XHotLab · 多平台内容运营与 X 发布工作台
+<div align="center">
 
-## 日常发布
+<img src="docs/assets/xhotlab-cover.svg" width="100%" alt="XHotLab 项目封面：发现 X 中文热点、整理视频素材、手动编写文案并打开 X 编辑器" />
 
-打开 `http://127.0.0.1:8766/`，首页默认显示「发布到 X」。
+# XHotLab
 
-1. 左侧按真实点赞量选择一条已采集的抖音热门视频。
-2. 右侧手动填写 X 发布正文，按输入框内的内容直接发送到编辑器。原作者与来源链接保存在视频素材信息中。
-3. 点击「上传视频并打开 X 编辑器」。系统自动关联发布任务、下载并检查 MP4，
-   通过当前 Edge 的 XHotLab 扩展打开 X 编辑器、填写文案并上传视频。
-4. 在 X 页面确认视频处理完成、账号和文字内容，再点击「发布」。
-   完成后可在首页登记实际帖子链接。
+### 开源 X / Twitter 热点发现与内容发布工作台
 
-采集任务管理、X 热门原帖、图文工厂、历史队列、AI 聊天和模型设置
-集中放在左侧「更多工具与管理」。首页只在需要登录平台账号、
-刷新 Edge 扩展或修复下载失败时展示对应的操作提示。
+**Discover trends · Organize media · Prepare posts for X**
 
-网页通过限定为 `http://127.0.0.1:8766` 的扩展外部消息通道，
-向已安装的 XHotLab Edge 扩展发送实际发布队列编号；发布信息继续
-从本地服务获取，原有账号登录状态保持在当前 Edge 配置中。
+Windows 本地运行｜Microsoft Edge 扩展｜中文热点发现｜短视频素材整理｜人工确认发布
 
-## Edge 扩展
+[![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-4869ed?style=flat-square)](docs/getting-started.md)
+[![Python](https://img.shields.io/badge/Python-3.12-3776ab?style=flat-square)](requirements.txt)
+[![Edge](https://img.shields.io/badge/Browser-Microsoft%20Edge-20a4a4?style=flat-square)](edge-extension/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-7358e6?style=flat-square)](LICENSE)
 
-### 抖音视频采集与手动 X 发布计划
+[**🌐 在线展示**](https://1210350468.github.io/XHotLab/) · [**🚀 快速开始**](#-快速开始) · [**📸 界面展示**](#-真实界面展示) · [**📖 使用指南**](docs/getting-started.md) · [**❓ 常见问题**](docs/faq.md) · [**English**](#-english-overview)
 
-CreatorHub 已接入真实的抖音登录账号与关键词采集接口。视频采集任务记录
-在 CreatorHub 中，XHotLab 通过对应任务 ID 读取原视频链接、作者、正文、
-发布时间、点赞和评论，并保存到本机 douyin_video_candidates 数据表。
+</div>
 
-侧边栏「多平台」中直接展示视频候选及计划时间；点击「进入 X 发布队列」
-可手动编辑发布正文，原始抖音作品链接和作者信息保持可查。
-一个发布任务支持四张图片或一个 MP4。视频采用 FFprobe 检测
-H.264、AAC、分辨率及文件大小，允许的上传上限为 512 MiB。
-候选视频可直接通过 CreatorHub 下载 MP4，也可上传本地 MP4；
-系统检查视频编码、分辨率和文件大小，Edge 扩展通过持续连接将
-MP4 分块传输到当前主窗口的 X 编辑器。原作者和原视频链接随候选记录保留。
+XHotLab 是一个面向中文创作者的本地内容运营工具。它将 X（原 Twitter）中文热点发现、CreatorHub 多平台素材采集、发布队列和 Edge 浏览器发帖准备流程集中在一个界面中。用户选择素材、自己写正文，系统负责整理 MP4 / 图片并将内容送入 X 官方编辑器，由用户确认后发布。
 
-真实视频采集、计划状态、编码检测与 Edge 界面测试：
+## ✨ 能做什么
 
-~~~powershell
-.\.venv\Scripts\python.exe -m pytest tests\ui_douyin_video_live.py -q -s
-~~~
+- **发现 X 中文热点**：读取公开 X 帖子的正文、时间、互动量和来源链接，按分类与热度浏览。
+- **从热门视频挑选素材**：通过 [CreatorHub](https://github.com/3441293738/creatorhub) 采集抖音作品信息，并保留作者、原视频地址、点赞和评论数据。
+- **手动编写发布文案**：编辑框保持由你控制，提交正文与输入内容一致，支持 280 字长度检查。
+- **准备 X 视频与图片发布**：本地检查视频格式、管理发布队列，通过 Microsoft Edge 扩展把媒体与正文送到 X 发帖编辑器。
+- **扩展创作工作流程**：包括原创图文、草稿管理、热点浏览、多平台运营、AI 聊天和模型设置，按需展开。
+- **本地数据与账号管理**：SQLite 和素材保存在用户电脑中，各平台账号在用户自己的浏览器环境中登录。
 
-### XHotLab 多平台运营中心
+## 📸 真实界面展示
 
-XHotLab 的多平台运营中心从 `http://127.0.0.1:8766/?view=creatorhub` 进入，
-当前浏览器标签页直接切换到 `http://127.0.0.1:8000/` 的完整运营页面。
-通过主工作台侧栏「多平台运营中心」或 Edge 扩展侧边栏的
-「完整工作台」进入。现有账号登录、批量采集、监控、素材管理、发布和互动管理界面
-统一展示 XHotLab 品牌。
+### 01 · 一个页面完成视频选题与发帖准备
 
-平台功能基于开源 [CreatorHub](https://github.com/3441293738/creatorhub) 项目，
-默认源码位于 XHotLab 同级目录中的 `CreatorHub`，后台运行于 `http://127.0.0.1:8000`。
-可通过环境变量 `CREATORHUB_HOME` 指定其他目录。
-继续使用原有 SQLite 数据库和账号浏览器环境，保持已登录账号与已采集素材。
-运营页面使用相同的品牌标志、紫色视觉体系和清晰的返回入口，点击
-「热门内容工作台」即可返回原来的 XHotLab 热点页面。
-两个本地服务分别运行，沿用本机访问控制和跨站请求保护。
+![XHotLab 视频发布工作台的实际运行截图，左侧为热门视频列表，右侧为手动文案与 X 编辑器准备入口](docs/assets/publish-workbench.png)
 
-侧边栏读取抖音、小红书、快手、视频号和 TikTok 的账号数量、
-启用中的监控、下载作品和评论统计；显示已登录账号状态。
-「读取当前网页」可以导入五个平台作品页面的地址，
-「解析作品」和「下载媒体」直接调用 CreatorHub 原有素材接口。
-点击「打开 XHotLab 多平台运营中心」可直接进入统一工作台。
-侧边栏在用户点击「启动多平台服务」时通过 Windows `pythonw` 启动后台。
+### 02 · 浏览真实 X 中文热门讨论
 
-真实集成测试：使用项目虚拟环境执行
-tests/ui_creatorhub_integration_live.py。
+![XHotLab 热点发现页面实际截图，包含分类、实时热度、搜索和公开帖子的互动数据](docs/assets/trends-discovery.png)
 
-**XHotLab · 中文创作助手 1.2.9** 位于项目内的 `edge-extension` 目录。扩展使用 XHotLab 的 SVG 品牌标志及 16、32、48、128 像素工具栏图标。网页版通过本地桥接程序自动发现当前 Edge 配置内的扩展 ID，扩展侧边栏会核对后台组件版本。
+### 03 · Edge 侧边栏，随时查看与准备发布
 
-点击 Edge 工具栏的 XHotLab 图标，即可打开右侧中文创作栏，包含五个工作区：
+<img src="docs/assets/edge-sidepanel.png" width="400" alt="XHotLab Microsoft Edge 扩展侧边栏实际截图：热门、当前帖、图文、发布、多平台五个入口" />
 
-- **热门**：读取最近 24 小时的真实 X 中文原帖，按照动态热度或发布时间排序。
-- **当前帖**：读取正在浏览的 X 原帖及图片。X 时间线帖子下方也提供「✦ XHotLab」按钮，直接采集该帖子。
-- **图文**：调用 Zen 生成原创中文观点，使用 ClickClick 制作三张配图，复用之前保存的素材包。
-- **发布**：编辑文案、预览原帖图片与原创图卡，最多选择四张图片；支持选择本地文件和拖入图片，上传后自动加入发布队列。
-- **多平台**：展示 CreatorHub 五个平台，管理抖音视频候选、手动文案、MP4 素材下载与发布排程。
+<sub>截图来自实际运行的本地工作台，第三方视频封面、作者等部分区域已做隐私处理。操作流程需要用户自行登录对应平台。</sub>
 
-品牌图标源文件为 `web/brand.svg`、`edge-extension/brand.svg`。当前本机
-CreatorHub 的品牌图标位于其 `app/web/brand.svg`。扩展图标由
-`tools/export_brand_assets.py` 通过 Playwright 与 Pillow 导出。
+## 🚀 快速开始
 
-点击「在当前 Edge 主窗口准备发布」时，扩展连接已登录 X 的标签页，填写文案并附加图片或 MP4。上传步骤和异常原因显示在侧边栏；用户在 X 编辑器检查内容并确认发布。
+**系统要求**：Windows 10 / 11、Python 3.12、Git for Windows、Node.js LTS、FFmpeg（含 FFprobe）、Microsoft Edge。
 
-扩展使用本机 127.0.0.1:8766 的现有 FastAPI 服务、SQLite 数据库和 Windows 无窗口定时任务。Zen 密钥继续保存在 Windows 凭据管理器。
-
-需要在其他 Edge 配置中安装时，打开 `edge://extensions/`，启用开发人员模式，点击「加载解压缩的扩展」，选择项目中的 `edge-extension` 文件夹。
-
-### 扩展验证命令
-
-~~~powershell
-.\.venv\Scripts\python.exe tests\ui_edge_extension_live.py
-.\.venv\Scripts\python.exe tests\ui_edge_extension_upload_live.py
-node --check edge-extension\background.js
-node --check edge-extension\content.js
-node --check edge-extension\sidepanel.js
-~~~
-
-本地 Windows 工作台：发现 X 中文区热门原帖，结合真实互动数据筛选讨论，使用 OpenCode Zen 生成原创中文观点和三张配图，并准备在 X 官方编辑器中发布。
-
-**本地地址**：<http://127.0.0.1:8766>
-
-## 已接入的开源项目
-
-- [x-lookup](https://github.com/mynameistito/x-lookup)：公开 X 帖子搜索服务。接收真实中文帖子正文、发布时间、原作者、原帖链接、点赞、转发、回复和浏览数据。使用免费只读搜索接口，不需要 X 开发者 API 密钥。
-- x-lookup 的 media.all 字段提供原帖图片、视频封面、尺寸和来源地址。XHotLab 会将选定话题的图片保存到独立的 data/source_media 素材库。
-- [ClickClick](https://github.com/mintyPT/clickclick)：使用 Playwright 和网页模板生成 PNG 社交图片。每个话题生成 3 张 900×1200 图卡。
-- FastAPI、SQLite、APScheduler：工作台、持久化存储和计划任务。
-- OpenCode Console Zen：中文写稿及聊天模型，可选择模型、思考强度并查看费用。
-- Codex 与 Claude Code：在本机执行得到明确授权的分析和文件操作任务。
-
-## X 中文热门发现
-
-后台每 15 分钟采集一次 X 中文区公开原帖，页面每 3 分钟静默更新。默认展示最近 24 小时的帖子；过期帖退出热门列表，已保存的历史原帖、草稿及图文素材保留在数据库与素材目录。实时热度根据真实互动分数和发布时间动态衰减，帖子越旧热度权重越低。
-
-每次搜索只读取 X 中文区的公开原帖：
-
-- 热门讨论：最近 24 小时内、互动较高的中文内容
-- AI 与科技
-- 游戏与影视
-- 生活与趣事
-- 数码与互联网
-
-使用原帖点赞、转发、回复、浏览量和发布时间计算选题热度。过滤抽奖、推广、短文、敏感媒体等内容。每个候选内容均保留真实 X 原帖地址。发现与创作共用 X 数据，页面和图文工厂显示同一来源。
-
-## 自动图文创作
-
-北京时间 **09:00、14:00、20:00** 自动执行。每次生成两个话题，每日记录模型费用达到 $0.20 时停止继续生成。
-
-每套包含：
-
-- 原作者、原帖链接与互动数据
-- 原帖照片和视频封面，带来源记录
-- 一段重新组织、包含独立观点的中文 X 草稿
-- `cover.png`、`context.png`、`discussion.png` 三张原创图文卡片
-- `card.json`、`post.txt` 和 ZIP 素材包
-- 草稿箱记录和待发布队列记录
-
-图文素材位于 `data/generated/<原帖哈希>/`。点击工作台「自动图文工厂」可以检查和下载每一套。
-
-## X 网页发布
-
-在「待发布队列」中可以查看 AI 原创图片及 X 原帖媒体，勾选最多四张图片并保存到本地数据库。「选择原创三图」可恢复默认原创配图。
-
-点击「导入 X 原帖图片」下载真实照片和视频封面。原帖素材标明原作者与来源链接，使用其他创作者的媒体文件前应确认相应使用许可。
-
-Edge 扩展使用当前已登录的主窗口执行发布准备。网页版继续提供历史发布任务和素材包管理入口。
-
-同时保留「打开 X 发帖窗口」预填文字的入口，以及下载所选图片、文案和来源记录的 ZIP 素材包。
-
-X 官方自动化规则限制以网页脚本批量自动发布热点内容。浏览器助手用于准备文字和图片，最终发布需由账号持有人在 X 编辑器确认。
-
-相关接口：GET /api/trends/{id}/media、GET /api/queue/{id}/media、PUT /api/queue/{id}/media、POST /api/queue/{id}/media/import、GET /api/queue/{id}/bundle、POST /api/queue/{id}/prepare-browser、GET /api/queue/{id}/browser-preparation。
-
-## 安装与启动
-
-在 Windows 10/11 上安装 Python 3.12、Git for Windows、Node.js LTS、FFmpeg（包含 `ffmpeg.exe` 和 `ffprobe.exe`）以及 Microsoft Edge。将 FFmpeg 所在文件夹加入 `PATH`。
-
-从 GitHub 克隆 XHotLab 后，在 PowerShell 中进入克隆得到的目录，执行：
+在 PowerShell 中执行：
 
 ```powershell
+git clone https://github.com/1210350468/XHotLab.git
+cd XHotLab
 .\install.ps1
 .\start.ps1
 ```
 
-`install.ps1` 会在同级目录获取 CreatorHub 原版源码，并安装两套 Python 环境、CreatorHub 浏览器组件及图文依赖。`start.ps1` 检查 XHotLab 与 CreatorHub 的实际健康状态后启动后台服务。
+打开 **http://127.0.0.1:8766**，进入「发布到 X」工作台。打开 `edge://extensions`，启用开发人员模式，选择「加载解压缩的扩展」，安装项目内的 `edge-extension` 文件夹。
 
-访问 <http://127.0.0.1:8766>。打开 `edge://extensions/`，加载项目中的 `edge-extension` 目录。发布页面会自动识别这个 Edge 配置里的插件。首次使用 X 或抖音采集功能时，分别登录自己的平台账号。
+安装脚本会获取并安装依赖的 CreatorHub 原版项目。多平台采集功能需要用户在 CreatorHub 登录自己的平台账号。FFmpeg 用于 MP4 格式检查与视频准备。
 
-可自行执行 `./install_startup.ps1` 注册登录 Windows 时自动启动的计划任务。后台日志位于 `logs/server.stdout.log` 和 `logs/server.stderr.log`。
+**[详细安装说明、常见故障与命令行操作](docs/getting-started.md)**
 
-**GitHub 分享范围：** 版本库包含 `app/`、`web/`、`edge-extension/`、`integrations/`、`scripts/`、`tools/`、`tests/` 以及安装脚本和文档。`.gitignore` 排除数据库、API 密钥、浏览器会话、已下载媒体、日志和本机虚拟环境。每位使用者在自己电脑上独立登录 X、抖音等平台。
+## 🎬 三步准备一条 X 帖子
 
-项目依赖的 CreatorHub 原版仓库由安装脚本获取。你当前电脑的 CreatorHub 页面包含额外的 XHotLab 品牌调整；克隆上游原版的朋友会看到 CreatorHub 原始界面。相关品牌改动可以作为独立维护的 CreatorHub 仓库分享。
+1. **选择素材**：在首页点击已经采集的热门视频，或者通过「更多工具与管理」进入热门发现、采集和草稿页面。
+2. **填写正文**：手动输入准备发布的完整文字，选择视频或图片，检查素材来源信息。
+3. **打开 X 编辑器**：点击上传与准备按钮，由 Edge 扩展打开当前浏览器的 X 编辑器，检查上传状态和文字，随后由用户点击「发布」。
 
-OpenCode Zen API 密钥保存在 Windows 凭据管理器。通过网页右上角模型设置连接，支持官方模型目录及思考强度。
+XHotLab 支持在完成发布后登记实际 X 帖子链接，便于区分待发布、已打开和已完成的任务。
 
-## 命令行
+## 🧩 项目组成
 
-```powershell
-.\.venv\Scripts\python.exe -m app.cli scan
-.\.venv\Scripts\python.exe -m app.cli hot --count 15
-.\.venv\Scripts\python.exe -m app.cli creative-run --count 2 --refresh
-.\.venv\Scripts\python.exe -m app.cli creative-packs
-.\.venv\Scripts\python.exe -m app.cli creative-status
-.\.venv\Scripts\python.exe -m app.cli queue
-```
+- **FastAPI + SQLite + APScheduler**：本地工作台、数据管理和定时任务。
+- **Microsoft Edge Manifest V3 扩展**：热点侧边栏、当前 X 页面内容读取、图文和视频上传准备。
+- **CreatorHub（独立依赖）**：抖音、小红书、快手、视频号和 TikTok 的账号与素材运营功能。
+- **x-lookup（第三方服务）**：X 中文公开帖子搜索。
+- **ClickClick 与可选的 OpenCode Zen**：图文渲染、模型辅助功能。
 
-Agent 工具可使用上述命令，或访问本机的 `/api/trends`、`/api/creative/status`、`/api/creative/run`、`/api/creative/packs`、`/api/queue` 等接口。
+安装、运行目录、数据保存位置和安全边界详见 [技术架构](docs/architecture.md)。
 
-## 验证
+## ❓ 常见问题
 
-```powershell
-.\.venv\Scripts\python.exe -m pytest -q
-.\.venv\Scripts\python.exe tests\smoke_live.py
-.\.venv\Scripts\python.exe tests\smoke_zen_live.py
-.\.venv\Scripts\python.exe tests\ui_live.py
-.\.venv\Scripts\python.exe tests\ui_zen_live.py
-.\.venv\Scripts\python.exe tests\ui_creative_live.py
-node --check web\app.js
-node --check web\creative.js
-```
+**能直接把抖音视频发布到 X / Twitter 吗？** 采集、下载和视频准备功能由 CreatorHub 与 XHotLab 配合完成。Edge 扩展在 X 编辑器中填写文字与媒体，发布按钮由用户本人确认。
+
+**为什么要安装 Edge 扩展？** 视频文件和文案需要在已经登录 X 的本机浏览器中填写。XHotLab 会自动识别当前浏览器配置中的扩展 ID。
+
+**会自动给视频添加作者或生成尴尬的文案吗？** 首页采用完整手写正文，系统保留作者和来源记录以便核对，不会向输入内容添加固定格式的作者署名。
+
+**支持哪些操作系统？** 当前安装与启动脚本面向 Windows 10 / 11，浏览器集成以 Microsoft Edge 为目标。
+
+更多关于安装、登录、视频编码、数据保存和 CreatorHub 的问题，请查看 [常见问题 FAQ](docs/faq.md)。
+
+## 🌍 English overview
+
+**XHotLab is a self-hosted Windows content discovery and X (Twitter) publishing assistant.** It combines Chinese X trend discovery, a CreatorHub-powered cross-platform media workflow, a local publishing queue, and a Microsoft Edge extension for preparing posts in the official X composer.
+
+**Use cases:** Discover Chinese-language trending posts on X, organize public short-video leads from Douyin, write your own caption, inspect MP4 assets, and prepare an X post in your signed-in Edge browser. The account owner reviews and submits the final post.
+
+**Keywords:** X Twitter publishing assistant, local social media workflow, Douyin to X content preparation, Chinese Twitter trends, Microsoft Edge extension, self-hosted content studio, CreatorHub integration, video publishing queue.
+
+Read the [English setup and product description](docs/getting-started.md) and [FAQ](docs/faq.md) for details.
+
+## 🤝 开源与贡献
+
+欢迎反馈实际问题、讨论功能与提交 Pull Request。提出问题时请说明 Windows、Edge、Python 版本和可复现的操作步骤，日志中请自行隐藏账号令牌与隐私内容。
+
+XHotLab 自有源码以 [MIT License](LICENSE) 发布。CreatorHub、x-lookup、ClickClick 和其他依赖遵循各自的项目许可证。此仓库不会包含个人浏览器会话、平台账号、下载视频或本地数据库。
+
+**项目主页：** https://1210350468.github.io/XHotLab/ · **GitHub：** https://github.com/1210350468/XHotLab

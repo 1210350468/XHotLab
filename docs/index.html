@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>XHotLab | 开源 X / Twitter 热点发现与内容发布工作台</title>
+  <meta name="description" content="XHotLab 是 Windows 本地运行的开源 X / Twitter 内容助手：发现中文热门讨论、通过 CreatorHub 整理短视频素材、手动编写发布文案，并用 Microsoft Edge 扩展在 X 编辑器中准备发布。">
+  <meta name="keywords" content="XHotLab,X Twitter publishing assistant,Twitter 热点发现,X 中文热门,抖音视频发布到 X,Edge 扩展,CreatorHub,开源内容运营工具,self-hosted social media">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#16152e">
+  <link rel="canonical" href="https://1210350468.github.io/XHotLab/">
+  <link rel="icon" type="image/svg+xml" href="assets/xhotlab-cover.svg">
+  <link rel="stylesheet" href="site.css">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:site_name" content="XHotLab">
+  <meta property="og:title" content="XHotLab | Discover · Create · Publish">
+  <meta property="og:description" content="发现 X 中文热点、整理短视频素材，手动写文案并准备发到 X。开源、Windows 本地运行、Microsoft Edge 扩展。">
+  <meta property="og:url" content="https://1210350468.github.io/XHotLab/">
+  <meta property="og:image" content="https://1210350468.github.io/XHotLab/assets/social-preview.png">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="640">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="XHotLab | Discover · Create · Publish">
+  <meta name="twitter:image" content="https://1210350468.github.io/XHotLab/assets/social-preview.png">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"SoftwareSourceCode",
+        "@id":"https://1210350468.github.io/XHotLab/#source",
+        "name":"XHotLab",
+        "description":"Open-source Windows content studio for Chinese X/Twitter trend discovery, CreatorHub media workflows, manual caption writing, and Microsoft Edge-assisted X composer preparation.",
+        "codeRepository":"https://github.com/1210350468/XHotLab",
+        "url":"https://1210350468.github.io/XHotLab/",
+        "image":"https://1210350468.github.io/XHotLab/assets/social-preview.png",
+        "programmingLanguage":["Python","JavaScript","HTML","CSS"],
+        "runtimePlatform":"Windows 10 and Windows 11",
+        "license":"https://github.com/1210350468/XHotLab/blob/main/LICENSE"
+      },
+      {
+        "@type":"FAQPage",
+        "@id":"https://1210350468.github.io/XHotLab/#faq",
+        "mainEntity":[
+          {"@type":"Question","name":"XHotLab 是什么？","acceptedAnswer":{"@type":"Answer","text":"XHotLab 是在 Windows 本地运行的开源 X/Twitter 热点发现与发布准备工具，包含中文热门浏览、媒体管理、发布队列和 Microsoft Edge 扩展。"}},
+          {"@type":"Question","name":"XHotLab 如何将抖音视频发布到 X？","acceptedAnswer":{"@type":"Answer","text":"CreatorHub 采集及下载视频，XHotLab 检查 MP4 并通过 Edge 扩展打开已登录的 X 编辑器，用户人工核对并发布。"}},
+          {"@type":"Question","name":"Does XHotLab automatically publish X posts?","acceptedAnswer":{"@type":"Answer","text":"XHotLab prepares text and media in the official X composer. The signed-in account owner reviews and submits the post. The local workflow runs on Windows with a Microsoft Edge extension."}}
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="主导航">
+      <a class="logo" href="#top" aria-label="XHotLab 首页"><span class="logo-mark">X</span><span>XHotLab</span></a>
+      <div class="nav-links"><a href="#features">功能</a><a href="#screenshots">界面</a><a href="#faq">常见问题</a><a class="nav-github" href="https://github.com/1210350468/XHotLab">GitHub 项目</a></div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="status-dot"></span> 开源 · 本地运行 · Windows + Edge</span>
+        <h1>内容灵感，<br><span>直接走向发布。</span></h1>
+        <p>XHotLab 汇集 X / Twitter 中文热门讨论、短视频素材和发布工作流。选择素材、手写文案、在浏览器中准备发帖，创作路径清晰可控。</p>
+        <div class="hero-buttons">
+          <a class="button primary" href="https://github.com/1210350468/XHotLab">查看 GitHub 源码 <span aria-hidden="true">↗</span></a>
+          <a class="button secondary" href="#screenshots">探索真实界面 <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-meta"><span>Python 3.12</span><span>Microsoft Edge</span><span>CreatorHub</span><span>MIT License</span></div>
+      </div>
+      <div class="hero-visual"><img src="assets/xhotlab-cover.svg" width="1280" height="640" alt="XHotLab 项目封面，展示热门视频选择、手动填写文案、在 X 编辑器中准备发布的工作流程"></div>
+    </section>
+
+    <section class="section section-light" id="features">
+      <div class="shell">
+        <span class="eyebrow lavender">WORKFLOW</span>
+        <h2>把常用功能放在一个工作台</h2>
+        <p class="section-desc">创作者可以集中管理选题、媒体和准备发布的内容。平台账号、模型配置与历史任务在需要时进入对应页面。</p>
+        <div class="features">
+          <article class="feature"><span class="feature-icon">01</span><h3>发现 X 中文热点</h3><p>浏览公开帖子、互动量、发布时间和来源，按话题分类与热度挑选讨论。</p></article>
+          <article class="feature"><span class="feature-icon">02</span><h3>整理视频与图片</h3><p>与 CreatorHub 配合收集抖音短视频信息，在本机检查 MP4 与素材状态。</p></article>
+          <article class="feature"><span class="feature-icon">03</span><h3>自行写好完整文案</h3><p>输入框直接控制 X 发布正文，保留素材来源记录，按需求修改文字。</p></article>
+          <article class="feature"><span class="feature-icon">04</span><h3>通过 Edge 准备发布</h3><p>向已登录的 X 编辑器填写文字、视频或图片，检查后由账号本人点击发布。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="screenshots">
+      <span class="eyebrow lavender">PRODUCT PREVIEW</span>
+      <h2>真实运行的 XHotLab</h2>
+      <p class="section-desc">以下展示实际运行的网页和浏览器扩展。第三方素材中的部分个人信息和图片经过模糊处理。</p>
+      <div class="preview"><div class="preview-head"><span>01 / PUBLISH STUDIO</span><strong>视频选择与手动发布文案</strong></div><img src="assets/publish-workbench.png" loading="lazy" width="1440" height="900" alt="XHotLab 发布工作台实际截图，视频列表、作者信息预览、文案输入区及准备发布按钮"></div>
+      <div class="preview-grid">
+        <div class="preview"><div class="preview-head"><span>02 / DISCOVERY</span><strong>X 中文热点发现</strong></div><img src="assets/trends-discovery.png" loading="lazy" width="1440" height="900" alt="XHotLab 热门讨论发现界面，包含分类导航、搜索栏和热门帖子卡片"></div>
+        <div class="preview narrow"><div class="preview-head"><span>03 / EXTENSION</span><strong>Edge 浏览器侧边栏</strong></div><img src="assets/edge-sidepanel.png" loading="lazy" width="435" height="860" alt="Microsoft Edge 的 XHotLab 侧边栏实际界面"></div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="install">
+      <div class="shell two-column">
+        <div><span class="eyebrow lavender">GET STARTED</span><h2>在自己的 Windows 电脑上运行</h2><p class="section-desc">安装 Python 3.12、Node.js、Git、FFmpeg 和 Microsoft Edge；项目安装脚本会自动获取所需的 CreatorHub 原版依赖。</p><a class="inline-link" href="https://github.com/1210350468/XHotLab/blob/main/docs/getting-started.md">完整安装指南 ↗</a></div>
+        <div class="terminal"><div class="terminal-top"><span class="window-dots">● ● ●</span><span>Windows PowerShell</span></div><pre><code>git clone https://github.com/1210350468/XHotLab.git
+cd XHotLab
+.\install.ps1
+.\start.ps1</code></pre><span class="terminal-note">启动后访问 http://127.0.0.1:8766</span></div>
+      </div>
+    </section>
+
+    <section class="section shell" id="faq">
+      <span class="eyebrow lavender">FAQ</span><h2>常见问题</h2>
+      <div class="faqs">
+        <details><summary>XHotLab 是什么？</summary><p>它是 Windows 本地运行的开源 X / Twitter 内容发现与发布准备工具，包含中文热门浏览、视频素材管理、发布队列和 Edge 扩展。</p></details>
+        <details><summary>怎么把抖音视频发到 X？</summary><p>CreatorHub 负责采集与下载，XHotLab 检查媒体文件、管理文案，并通过 Edge 扩展打开 X 编辑器。最终发布由用户在浏览器中完成。</p></details>
+        <details><summary>会自动附加作者或生成文案吗？</summary><p>首页采用手动编写正文，按实际输入内容准备发帖。原作者与视频链接保存在素材信息中，供用户核对。</p></details>
+        <details><summary>Does XHotLab automatically publish posts on X?</summary><p>XHotLab prepares selected media and user-written text in the official X composer. The signed-in account owner reviews and submits the post.</p></details>
+      </div>
+      <a class="inline-link" href="https://github.com/1210350468/XHotLab/blob/main/docs/faq.md">全部常见问题 ↗</a>
+    </section>
+
+    <section class="ending shell"><span class="eyebrow">DISCOVER · CREATE · PUBLISH</span><h2>让内容创作保持简单。</h2><p>An open-source X / Twitter content studio for creators who want control over their workflow.</p><a class="button end-button" href="https://github.com/1210350468/XHotLab">浏览源码与安装说明 ↗</a></section>
+  </main>
+
+  <footer class="site-footer shell"><span>© 2026 XHotLab contributors · MIT License</span><span><a href="https://github.com/1210350468/XHotLab">GitHub</a> · <a href="https://github.com/1210350468/XHotLab/blob/main/docs/architecture.md">Architecture</a> · <a href="https://github.com/1210350468/XHotLab/blob/main/docs/faq.md">FAQ</a></span></footer>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">XHotLab | Discover, Create, Publish</title>
+  <desc id="desc">XHotLab branding artwork, showing discovery, manual writing and preparing a post in the X editor.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#11122a"/><stop offset=".55" stop-color="#211b47"/><stop offset="1" stop-color="#12152b"/>
+    </linearGradient>
+    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#af99ff"/><stop offset="1" stop-color="#6950d8"/>
+    </linearGradient>
+    <linearGradient id="mint" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#89f7d8"/><stop offset="1" stop-color="#b9e8ff"/>
+    </linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="55"/></filter>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#040414" flood-opacity=".35"/></filter>
+  </defs>
+  <rect width="1280" height="640" rx="30" fill="url(#bg)"/>
+  <circle cx="1110" cy="70" r="230" fill="#7657dd" opacity=".27" filter="url(#blur)"/>
+  <circle cx="630" cy="580" r="195" fill="#38adba" opacity=".15" filter="url(#blur)"/>
+  <g opacity=".12" stroke="#c4b8ff" stroke-width="1">
+    <path d="M0 510H1280M0 550H1280M0 590H1280M100 0V640M180 0V640M260 0V640M340 0V640M420 0V640M500 0V640M580 0V640M660 0V640M740 0V640M820 0V640M900 0V640M980 0V640M1060 0V640M1140 0V640"/>
+  </g>
+  <g transform="translate(84 85)">
+    <rect width="76" height="76" rx="23" fill="url(#violet)"/>
+    <path d="M22 21L54 55M54 21L22 55" stroke="white" stroke-width="8" stroke-linecap="round"/>
+    <path d="M29 38H47" stroke="#87f5d7" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="55" cy="16" r="6" fill="#87f5d7"/>
+  </g>
+  <text x="180" y="137" fill="#ffffff" font-size="51" font-weight="800" font-family="Segoe UI, Arial, sans-serif" letter-spacing="-1.5">XHotLab</text>
+  <text x="87" y="238" fill="url(#mint)" font-size="17" font-weight="700" font-family="Segoe UI, Arial, sans-serif" letter-spacing="4">DISCOVER · CREATE · PUBLISH</text>
+  <text x="84" y="322" fill="#ffffff" font-size="41" font-weight="750" font-family="Microsoft YaHei, PingFang SC, Segoe UI, sans-serif">把内容灵感，变成 X 帖子</text>
+  <text x="87" y="383" fill="#b7b3d4" font-size="22" font-family="Microsoft YaHei, PingFang SC, Segoe UI, sans-serif">发现热门讨论 · 整理视频素材 · 手动编写文案</text>
+  <g transform="translate(87 435)">
+    <rect width="145" height="42" rx="21" fill="#ffffff" fill-opacity=".10" stroke="#ffffff" stroke-opacity=".20"/>
+    <text x="72" y="27" text-anchor="middle" fill="#e8e3ff" font-size="15" font-weight="650" font-family="Microsoft YaHei, Arial, sans-serif">Windows 本地运行</text>
+    <rect x="157" width="145" height="42" rx="21" fill="#ffffff" fill-opacity=".10" stroke="#ffffff" stroke-opacity=".20"/>
+    <text x="229" y="27" text-anchor="middle" fill="#e8e3ff" font-size="15" font-weight="650" font-family="Microsoft YaHei, Arial, sans-serif">Edge 扩展</text>
+    <rect x="314" width="125" height="42" rx="21" fill="#ffffff" fill-opacity=".10" stroke="#ffffff" stroke-opacity=".20"/>
+    <text x="376" y="27" text-anchor="middle" fill="#e8e3ff" font-size="15" font-weight="650" font-family="Microsoft YaHei, Arial, sans-serif">Open Source</text>
+  </g>
+  <text x="88" y="562" fill="#8f8ba9" font-size="15" font-family="Segoe UI, Arial, sans-serif">github.com/1210350468/XHotLab</text>
+  <g transform="translate(728 104)" filter="url(#shadow)">
+    <rect width="461" height="430" rx="24" fill="#f9f9fe"/>
+    <rect width="461" height="63" rx="24" fill="#eeecff"/>
+    <rect y="38" width="461" height="25" fill="#eeecff"/>
+    <circle cx="30" cy="31" r="6" fill="#bdafe7"/><circle cx="51" cy="31" r="6" fill="#bdafe7"/><circle cx="72" cy="31" r="6" fill="#bdafe7"/>
+    <text x="100" y="36" fill="#514782" font-size="16" font-weight="750" font-family="Microsoft YaHei, Arial, sans-serif">XHotLab / 发布工作台</text>
+    <rect x="29" y="88" width="403" height="87" rx="15" fill="#ffffff" stroke="#e9e6f3"/>
+    <rect x="45" y="104" width="56" height="56" rx="11" fill="#dcd4fb"/>
+    <path d="M62 118L81 132L62 146Z" fill="#7a62d8"/>
+    <text x="116" y="122" font-size="12" fill="#8b83a7" font-family="Microsoft YaHei, Arial, sans-serif">01 / CHOOSE</text>
+    <text x="116" y="147" font-size="19" fill="#302b4d" font-weight="700" font-family="Microsoft YaHei, Arial, sans-serif">选择热门视频与素材</text>
+    <rect x="29" y="192" width="403" height="132" rx="15" fill="#ffffff" stroke="#e9e6f3"/>
+    <text x="48" y="216" font-size="12" fill="#8b83a7" font-family="Microsoft YaHei, Arial, sans-serif">02 / WRITE</text>
+    <text x="48" y="246" font-size="18" font-weight="700" fill="#302b4d" font-family="Microsoft YaHei, Arial, sans-serif">自己决定要发布的文字</text>
+    <rect x="48" y="263" width="351" height="10" rx="5" fill="#ece9f7"/>
+    <rect x="48" y="282" width="268" height="10" rx="5" fill="#ece9f7"/>
+    <rect x="29" y="345" width="403" height="60" rx="13" fill="#765bda"/>
+    <path d="M359 367L375 376L359 385L362 377Z" fill="none" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+    <text x="52" y="382" font-size="20" font-weight="750" fill="white" font-family="Microsoft YaHei, Arial, sans-serif">03 / 打开 X 编辑器</text>
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+# XHotLab
+
+> Open-source Windows X/Twitter trend discovery and publishing preparation workbench with a Microsoft Edge extension and optional CreatorHub media integration.
+
+- Project: https://github.com/1210350468/XHotLab
+- Product website: https://1210350468.github.io/XHotLab/
+- Setup guide: https://github.com/1210350468/XHotLab/blob/main/docs/getting-started.md
+- FAQ: https://github.com/1210350468/XHotLab/blob/main/docs/faq.md
+- Architecture: https://github.com/1210350468/XHotLab/blob/main/docs/architecture.md
+- License: https://github.com/1210350468/XHotLab/blob/main/LICENSE
+
+XHotLab runs locally on Windows and helps users discover Chinese-language X posts, organize public short-video leads via CreatorHub, write their own X captions, and prepare video or image posts in the official X composer using Microsoft Edge. The account owner confirms final publication.
